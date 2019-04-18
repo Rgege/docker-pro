@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xrDocker</groupId>
-    <artifactId>white-mouse</artifactId>
+    <artifactId>docker_mouse</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>white-mouse</name>
+    <name>docker_mouse</name>
     <description>Used to learn to automate deployment with springboot+Jenkins+docker+git build</description>
 
     <properties>
