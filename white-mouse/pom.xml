@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xrDocker</groupId>
-    <artifactId>dkmouse</artifactId>
+    <artifactId>white-mouse</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dkmouse</name>
+    <name>white-mouse</name>
     <description>Used to learn to automate deployment with springboot+Jenkins+docker+git build</description>
 
     <properties>
@@ -58,7 +58,7 @@
                 </executions>
                 <configuration>
                     <!-- 镜像名称-->
-                    <imageName>${project.artifactId}</imageName>
+                    <imageName>${filename-append}</imageName>
                     <!-- 镜像标签-->
                     <imageTags>
                         <!--可以指定多个标签    建议弄成自增序列或者时间戳类型，用于区分版本-->
