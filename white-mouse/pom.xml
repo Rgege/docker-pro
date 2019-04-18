@@ -15,7 +15,11 @@
     <description>Used to learn to automate deployment with springboot+Jenkins+docker+git build</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
+        <start-class>com.xrdocker.whitemouse.WhiteMouseApplication</start-class>
     </properties>
 
     <dependencies>
@@ -32,6 +36,7 @@
     </dependencies>
 
     <build>
+        <finalName>${filename-append}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -75,5 +80,23 @@
             <!-- Docker maven plugin -->
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <filename-append>dockerMouse</filename-append>
+                <profiles.activation>dev</profiles.activation>
+            </properties>
+        </profile>
+        <profile>
+            <id>prd</id>
+            <properties>
+                <filename-append>dockerMouse</filename-append>
+                <profiles.activation>prd</profiles.activation>
+            </properties>
+        </profile>
+    </profiles>
 </project>
