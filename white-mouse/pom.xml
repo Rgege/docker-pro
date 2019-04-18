@@ -87,14 +87,14 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <filename-append>dockerMouse</filename-append>
+                <filename-append>docker_mouse</filename-append>
                 <profiles.activation>dev</profiles.activation>
             </properties>
         </profile>
         <profile>
             <id>prd</id>
             <properties>
-                <filename-append>dockerMouse</filename-append>
+                <filename-append>docker_mouse</filename-append>
                 <profiles.activation>prd</profiles.activation>
             </properties>
         </profile>
