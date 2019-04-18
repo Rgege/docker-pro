@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xrDocker</groupId>
-    <artifactId>docker_mouse</artifactId>
+    <artifactId>dkmouse</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>docker_mouse</name>
+    <name>dkmouse</name>
     <description>Used to learn to automate deployment with springboot+Jenkins+docker+git build</description>
 
     <properties>
@@ -87,14 +87,14 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <filename-append>docker_mouse</filename-append>
+                <filename-append>dkmouse</filename-append>
                 <profiles.activation>dev</profiles.activation>
             </properties>
         </profile>
         <profile>
             <id>prd</id>
             <properties>
-                <filename-append>docker_mouse</filename-append>
+                <filename-append>dkmouse</filename-append>
                 <profiles.activation>prd</profiles.activation>
             </properties>
         </profile>
