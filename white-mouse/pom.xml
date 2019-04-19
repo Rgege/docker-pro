@@ -19,6 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <start-class>com.xrdocker.whitemouse.WhiteMouseApplication</start-class>
         <docker.image.prefix>demo</docker.image.prefix> <!--镜像前缀，随便取-->
     </properties>
@@ -57,7 +58,7 @@
                 <configuration>
                     <!--指定dockerfile的路径-->
                     <contextDirectory>${project.basedir}/src/main/docker</contextDirectory>
-                    <repository>${docker.image.prefix}/${maven.build.timestamp}</repository>
+                    <repository>${docker.image.prefix}${maven.build.timestamp}</repository>
                     <buildDirectory></buildDirectory>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
