@@ -10,7 +10,7 @@
 FROM openjdk:8-jdk-alpine
 ENTRYPOINT ["java","-jar","/dkmouse.jar"," -Xms512m","-Xmx512m","--spring.profiles.active=prd","--server.port=8001"]
 ARG JAR_FILE
-ADD ${JAR_FILE} /dkmouse.jar
+ADD dkmouse.jar dkmouse.jar
 EXPOSE 8001
 
 
