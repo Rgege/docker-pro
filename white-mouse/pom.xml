@@ -55,7 +55,10 @@
                 <!--</execution>-->
                 <!--</executions>-->
                 <configuration>
+                    <!--指定dockerfile的路径-->
+                    <contextDirectory>${project.basedir}/src/main/docker</contextDirectory>
                     <repository>${docker.image.prefix}/${maven.build.timestamp}</repository>
+                    <buildDirectory></buildDirectory>
                     <buildArgs>
                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
                     </buildArgs>
