@@ -58,7 +58,8 @@
                 </executions>
                 <configuration>
                     <!-- 镜像名称-->
-                    <imageName>${filename-append}</imageName>
+                    <!--<imageName>${filename-append}</imageName>-->
+                    <imageName>dkmouse</imageName>
                     <!-- 镜像标签-->
                     <imageTags>
                         <!--可以指定多个标签    建议弄成自增序列或者时间戳类型，用于区分版本-->
