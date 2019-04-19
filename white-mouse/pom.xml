@@ -20,6 +20,7 @@
         <java.version>1.8</java.version>
         <skipTests>true</skipTests>
         <start-class>com.xrdocker.whitemouse.WhiteMouseApplication</start-class>
+        <docker.image.prefix>demo</docker.image.prefix> <!--镜像前缀，随便取-->
     </properties>
 
     <dependencies>
@@ -38,47 +39,28 @@
     <build>
         <finalName>${filename-append}</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
+
             <!-- Docker maven plugin -->
             <plugin>
                 <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>1.0.0</version>
-                <executions>
-                    <execution>
-                        <id>build-image</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>build</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.3.7</version>
+                <!--放开这块注释，则运行mvn deploy命令就会打包镜像<executions>-->
+                <!--<execution>-->
+                <!--<id>default</id>-->
+                <!--<goals>-->
+                <!--<goal>build</goal>-->
+                <!--&lt;!&ndash;<goal>push</goal>&ndash;&gt;-->
+                <!--</goals>-->
+                <!--</execution>-->
+                <!--</executions>-->
                 <configuration>
-                    <!-- 镜像名称-->
-                    <!--<imageName>${filename-append}</imageName>-->
-                    <imageName>dkmouse</imageName>
-                    <!-- 镜像标签-->
-                    <imageTags>
-                        <!--可以指定多个标签    建议弄成自增序列或者时间戳类型，用于区分版本-->
-                        <imageTag>${maven.build.timestamp}</imageTag>
-                    </imageTags>
-                    <baseImage>java</baseImage>
-                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
-                    <!-- dockerfile文件路径-->
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <directory>${project.build.directory}</directory>
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
+                    <repository>${docker.image.prefix}/${maven.build.timestamp}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
                 </configuration>
             </plugin>
-            <!-- Docker maven plugin -->
         </plugins>
     </build>
     <profiles>
