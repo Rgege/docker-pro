@@ -1,4 +1,4 @@
-appname="dkmouse"
+appname="dkmouse01"
 word="1"
 echo "$word"
 word=`docker ps -a -q --no-trunc --filter name=^/"$appName"$`
@@ -17,5 +17,5 @@ then
     /usr/bin/docker stop "$word"
     /usr/bin/docker rm "$word"
 fi
-/usr/lib/dev/maven/apache-maven-3.6.1/bin/mvn clean package -P prd dockerfile:build
+/usr/lib/dev/maven/apache-maven-3.6.1/bin/mvn clean install -P prd dockerfile:build
 /usr/bin/docker run -d -p 8001:8001 --name $appname $appname
