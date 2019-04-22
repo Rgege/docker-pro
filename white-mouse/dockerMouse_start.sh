@@ -18,4 +18,5 @@ then
     /usr/bin/docker rm "$word"
 fi
 /usr/lib/dev/maven/apache-maven-3.6.1/bin/mvn clean package -P spring-boot dockerfile:build
-/usr/bin/docker run -d -p 8001:8001 --name $appname $appname:latest
+#/usr/bin/docker run -d -p 8001:8001 --name $appname $appname:latest
+/usr/bin/docker run -d -p 8001:8001 --name $appname $appname
