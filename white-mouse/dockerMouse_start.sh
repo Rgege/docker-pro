@@ -1,7 +1,8 @@
 appname="dkmouse01"
 containerName="1"
 echo "$containerName"
-containerName=$(docker ps -a -q --no-trunc --filter name= $appName)
+#containerName=$(docker ps -a -q --no-trunc --filter name= $appName)
+containerName=`docker ps -a -q --no-trunc --filter name= $appName`
 echo "=========================exit:$containerName"
 if [ -z "$containerName" ];
 then
