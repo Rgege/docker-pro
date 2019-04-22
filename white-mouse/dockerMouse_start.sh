@@ -1,7 +1,7 @@
 appname="dkmouse01"
 word="1"
-#containerName=$(docker ps -a -q --no-trunc --filter name= $appName)
-word=`docker ps -a -q --no-trunc --filter name=^/"$appName"$`
+word=$(docker ps -a -q --no-trunc --filter name= ${appName})
+#word=`docker ps -a -q --no-trunc --filter name=^/"$appName"$`
 echo "=========================exit:$word"
 if [ -z "$word" ];
 then
