@@ -2,7 +2,7 @@ appname="dkmouse01"
 containerName="1"
 echo "$containerName"
 containerName=$(docker ps -a -q --no-trunc --filter name= $appName)
-echo "$containerName"
+echo "=========================exit:$containerName"
 if [ -z "$containerName" ];
 then
     echo "====================当前不存在该容器，直接进行启动该操作===================="
