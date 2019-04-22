@@ -62,8 +62,8 @@
                     <!--指定dockerfile的路径-->
                     <!--<contextDirectory>${project.basedir}/src/main/docker</contextDirectory>-->
                     <contextDirectory>${project.basedir}</contextDirectory>
-                    <!--<tag>${maven.build.timestamp}</tag>-->
-                    <tag>latest</tag>
+                    <tag>${maven.build.timestamp}</tag>
+                    <!--<tag>latest</tag>-->
                     <!--<repository>${docker.repostory}/${docker.image.prefix}${maven.build.timestamp}</repository>-->
                     <repository>${docker.image.prefix}</repository>
                     <buildArgs>
