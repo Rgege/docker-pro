@@ -7,5 +7,4 @@ echo "====================start docker container:["${appname}"]=================
 #删除none镜像
 /usr/bin/docker rmi $(docker images -f "dangling=true" -q)
 
-echo "====================映射端口===================="
-/usr/bin/docker -p 8999:8999
+
