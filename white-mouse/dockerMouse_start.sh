@@ -1,5 +1,5 @@
 appname="$1"
-javaOPTS="-Xms512m -Xmx512m -Djava.rmi.server.hostname=211.149.142.55 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.rmi.port=8999 -Dcom.sun.management.jmxremote.port=8999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
+javaOPTS="-Xms512m -Xmx512m -Djava.rmi.server.hostname=211.149.142.55 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.rmi.port=11199 -Dcom.sun.management.jmxremote.port=1199 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 echo "====================start docker container:["${appname}"]===================="
 #/usr/bin/docker run -d -p 8001:8001 --name $appname $appname
