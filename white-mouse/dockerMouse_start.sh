@@ -7,5 +7,7 @@ echo "====================start docker container:["${appname}"]=================
 #/usr/bin/docker run -d -e JAVA_OPTS=$javaOPTS -p 8001:8001 --name $appname $appname
 #删除none镜像
 /usr/bin/docker rmi $(docker images -f "dangling=true" -q)
+#给容器内的日志路径跟宿主机之间建立软连接
+ln -s $(docker inspect -f {{.GraphDriver.Data.MergedDir}} ${appname})/opt/app/log/dkmouse/ /opt/app/log
 
 
