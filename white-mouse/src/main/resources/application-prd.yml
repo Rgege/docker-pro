@@ -23,6 +23,6 @@ c3p0:
 spring:
    datasource:
       driver-class-name: com.mysql.jdbc.Driver
-      url: mysql://211.149.142.55:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
+      url:  jdbc.mysql://211.149.142.55:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
       username: root
       password: xr2ln1314
