@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
  <configuration>
-	<property name="rootPath" value="/opt/apps/log" />
+	<property name="rootPath" value="/opt/app/log/dkmouse" />
 	<property name="baseFile" value="dkmouse"></property>
 	<property name="log.root.level" value="DEBUG"></property>
 	<!-- 控制台输出日志 -->
