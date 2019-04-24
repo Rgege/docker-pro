@@ -1,0 +1,9 @@
+##logging:
+##  config: 'classpath:logback-spring.xml'
+#mybatis:
+#  mapperLocations: 'classpath:/mapper/*Mapper.xml '
+#  typeAliasesPackage: 'com.xrdocker.whitemouse.persistent.entity'
+
+mybatis:
+   typeAliasesPackage: com.xrdocker.whitemouse.persistent.entity
+   mapperLocations: classpath:mapper/*.xml

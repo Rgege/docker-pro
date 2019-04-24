@@ -1,0 +1,28 @@
+#jdbc:
+#   driverClass:
+#   url: mysql://localhost:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
+#   username: root
+
+c3p0:
+   maxPoolSize: 20
+   minPoolSize: 2
+   initialPoolSize: 2
+   maxIdleTime: 60
+   checkoutTimeout: 5000
+   acquireIncrement: 2
+   acquireRetryAttempts: 0
+   acquireRetryDelay: 1000
+   autoCommitOnClose: false
+   automaticTestTable: C3P0_AUTO_TEST
+   breakAfterAcquireFailure: false
+   idleConnectionTestPeriod: 60
+   testConnectionOnCheckin: false
+   testConnectionOnCheckout: false
+
+
+spring:
+   datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: mysql://localhost:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
+      username: root
+

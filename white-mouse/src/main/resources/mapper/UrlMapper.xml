@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xrdocker.whitemouse.persistent.UrlMapper" >
+
+  <insert id="insert" parameterType="com.xrdocker.whitemouse.persistent.entity.UrlDTO" >
+    insert into url_tb (reqIp, reqUrl, reqTime,status)
+    values (#{reqIp,jdbcType=VARCHAR}, #{reqUrl,jdbcType=VARCHAR}, #{reqTime,jdbcType=DATE}, #{status,jdbcType=INTEGER})
+  </insert>
+
+</mapper>
