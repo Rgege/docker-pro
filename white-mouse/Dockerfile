@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 #FROM java
-VOLUME ["/tmp","/opt/app/log/dkmouse"]
+VOLUME /tmp
 ARG JAR_FILE
 ADD ${JAR_FILE} /dkmouse.jar
 #RUN bash -c 'touch /dkmouse.jar'
