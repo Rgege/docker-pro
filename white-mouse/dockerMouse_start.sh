@@ -3,11 +3,13 @@ appname="$1"
 
 echo "====================start docker container:["${appname}"]===================="
 #-v /opt/app/log/dkmouse:/opt/app/log/dkmouse
-/usr/bin/docker run -d -p 8001:8001 -p 8999:8999  --name $appname $appname
+#--link mysql5.7:dkMysql 容器之间互相连接
+/usr/bin/docker run -d -p 8001:8001 -p 8999:8999  --name $appname $appname --link mysql5.7:dkMysql
 #/usr/bin/docker run -d -e JAVA_OPTS=$javaOPTS -p 8001:8001 --name $appname $appname
 #删除none镜像
 /usr/bin/docker rmi $(docker images -f "dangling=true" -q)
 #给容器内的日志路径跟宿主机之间建立软连接
+rm /opt/app/log/dkmouse
 ln -s $(docker inspect -f {{.GraphDriver.Data.MergedDir}} ${appname})/opt/app/log/dkmouse/ /opt/app/log
 
 
