@@ -26,3 +26,5 @@ spring:
       url:  jdbc:mysql://localhost:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
       username: root
 
+sendFile: 'D:\xxumm.sh'
+

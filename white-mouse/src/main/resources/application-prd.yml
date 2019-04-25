@@ -26,3 +26,5 @@ spring:
       url:  jdbc:mysql://dkMysql:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
       username: root
       password: xr2ln1314
+
+sendFile: '/opt/xxumm.sh'
