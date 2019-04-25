@@ -4,7 +4,7 @@ appname="$1"
 echo "====================start docker container:["${appname}"]===================="
 #-v /opt/app/log/dkmouse:/opt/app/log/dkmouse
 #--link mysql5.7:dkMysql 容器之间互相连接
-/usr/bin/docker run -d -p 8001:8001 -p 8999:8999 -link 64e471b8b160:dkMysql --name $appname $appname
+/usr/bin/docker run -d -p 8001:8001 -p 8999:8999 -link mysql5.7:dkMysql --name $appname $appname
 #/usr/bin/docker run -d -e JAVA_OPTS=$javaOPTS -p 8001:8001 --name $appname $appname
 #删除none镜像
 /usr/bin/docker rmi $(docker images -f "dangling=true" -q)
