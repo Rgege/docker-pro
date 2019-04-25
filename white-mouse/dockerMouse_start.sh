@@ -9,7 +9,7 @@ echo "====================start docker container:["${appname}"]=================
 #删除none镜像
 /usr/bin/docker rmi $(docker images -f "dangling=true" -q)
 #给容器内的日志路径跟宿主机之间建立软连接
-rm /opt/app/log/dkmouse
+echo y | rm /opt/app/log/dkmouse
 ln -s $(docker inspect -f {{.GraphDriver.Data.MergedDir}} ${appname})/opt/app/log/dkmouse/ /opt/app/log
 
 
