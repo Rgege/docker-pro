@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HController {
 
     @GetMapping("a")
-    @ResponseBody
     public String index(){
         return "index";
     }
