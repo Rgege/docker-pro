@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/fkSrpsl/")
+@RequestMapping("/H/")
 public class HController {
 
+    @GetMapping("a")
+    @ResponseBody
+    public String index(){
+        return "index";
+    }
 
     @GetMapping("sayHello")
     @ResponseBody
