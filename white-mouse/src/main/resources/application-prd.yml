@@ -3,9 +3,9 @@
 #   url: mysql://211.149.142.55:3306/dkmouse?useUnicode=true&characterEncoding=UTF-8
 #   username: root
 #   password: xr2ln1314
-server:
-    servlet:
-        context-path: '/fkSrpsl'
+#server:
+#    servlet:
+#        context-path: '/fkSrpsl'
 c3p0:
    maxPoolSize: 20
    minPoolSize: 2
