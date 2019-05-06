@@ -4,7 +4,7 @@ appname="$1"
 echo "====================start docker container:["${appname}"]===================="
 #-v /opt/app/log/dkmouse:/opt/app/log/dkmouse
 #--link mysql5.7:dkMysql 容器之间互相连接 时间设置-v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro
-/usr/bin/docker run -d -p 7210:8001 -p 8999:8999 --link mysql5.7:dkMysql --name $appname $appname --iptables=false
+/usr/bin/docker run -d -p 7210:8001 -p 8999:8999 --icc=false --iptables=true --link mysql5.7:dkMysql -v /etc/localtime:/etc/localtime:ro --name $appname $appname
 #/usr/bin/docker run -d -e JAVA_OPTS=$javaOPTS -p 8001:8001 --name $appname $appname
 #删除none镜像
 /usr/bin/docker rmi $(docker images -f "dangling=true" -q)
