@@ -11,7 +11,7 @@ public class HController {
 
     @GetMapping("a")
     public String index(){
-        return "index";
+        return "aftest";
     }
 
     @GetMapping("sayHello")
