@@ -30,7 +30,7 @@
             float: left;
             font-size: 16px;
             margin-left: 90%;
-            margin-top: -12%;
+            margin-top: -11%;
         }
 
         #searchTubiao a {
@@ -46,12 +46,12 @@
         #searchTubiao .tubiao {
             color: #0088CF;
         }
-
         /*带搜索图标的搜索框样式*/
+
         #index_panel {
             width: 18%;
             height: 520px;
-            border: 3px solid #F00;
+            border-right: 3px solid #F00;
             float: left;
         }
 
@@ -59,7 +59,7 @@
             width: 80%;
             height: 520px;
             /*margin-left: 26%;*/
-            border: 3px solid #1725ff;
+            border-left: 3px solid #1725ff;
             float: left;
         }
     </style>
@@ -74,6 +74,23 @@
             $("#search").removeClass("search");
             $("#tubiao").removeClass("tubiao");
         })
+        function doSearch() {
+            var s=$('#search').val();
+            console.log("====================search: "+s)
+        }
+        function showDetail(id) {
+            active(id);
+        }
+        function active(id) {
+            var list=document.getElementsByClassName('list-group-item');
+            for (var i = 0, len = list.length; i < len; i++){
+                var clazz=list[i].getAttribute("class");
+                if (clazz.indexOf("active")!=-1){
+                    list[i].classList.remove("active");
+                }
+            }
+            $('#'+id).addClass('active');
+        }
     </script>
 </head>
 <body>
@@ -87,11 +104,40 @@
 		       <input type="text" class="form-control input-sm" id='search' name="search" value="" placeholder="Search"autocomplete="on"/>
 	       </span>
            <span class="searchTubiao" id="searchTubiao">
-		       <a href="#" title="搜索" class="fa fa-search" id="tubiao"></a>
+		       <a href="#" title="搜索" class="fa fa-search" id="tubiao" onclick="doSearch()"></a>
 	       </span>
         </div>
+        <div id="list" style="margin-top: 15%">
+            <a id="1" class="list-group-item" onclick="showDetail(this.id)">iconst_0</a>
+            <a id="2" class="list-group-item" onclick="showDetail(this.id)">iconst_1</a>
+            <a id="3" class="list-group-item" onclick="showDetail(this.id)">iconst_2</a>
+            <a id="4" class="list-group-item" onclick="showDetail(this.id)">iconst_3</a>
+            <a id="5" class="list-group-item" onclick="showDetail(this.id)">iconst_4</a>
+            <a id="6" class="list-group-item" onclick="showDetail(this.id)">iconst_5</a>
+        </div>
     </div>
-    <div id="content_panel"></div>
+    <div id="content_panel">
+        <div id="outline" style="margin-left: 5%;color: blue;">
+            <label style="font-size: large">指令描述:</label>
+            <br>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>指令码</th>
+                    <th>助记符</th>
+                    <th>功能描述</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>0x02</td>
+                    <td>iconst_m1</td>
+                    <td>int型常量值-1进栈</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 </html>
