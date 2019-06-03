@@ -13,45 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.xrdocker.whitemouse.controller;
+package com.xrdocker.whitemouse.service.impl;
 
-
+import com.xrdocker.whitemouse.persistent.JvmOederMapper;
+import com.xrdocker.whitemouse.persistent.entity.JvmOederWithBLOBs;
 import com.xrdocker.whitemouse.service.JvmOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
- * TestController
+ * JvmOrderServiceImpl
  *
  * @author xiong rui
  * @version 1.0.0
- * @date 2019/4/18
+ * @date 2019/6/3
  **/
-@Controller
-@RequestMapping("/test/")
-public class TestController {
+@Service
+public class JvmOrderServiceImpl implements JvmOrderService {
 
     @Autowired
-    JvmOrderService service;
+    private JvmOederMapper mapper;
 
-    @GetMapping("sayHello")
-    @ResponseBody
-    public String sayHello(){
-        return "hello ~~~~~~~~";
-    }
+    @Override
+    public List<JvmOederWithBLOBs> getAll() {
 
-
-    @GetMapping("test")
-    @ResponseBody
-    public Map<String,Object> test(){
-        Map<String,Object> map=new HashMap<>();
-        map.put("obj",service.getAll());
-        return map;
+        return mapper.selectAll();
     }
 }

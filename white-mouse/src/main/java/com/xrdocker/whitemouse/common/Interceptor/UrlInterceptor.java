@@ -34,7 +34,7 @@ public class UrlInterceptor extends HandlerInterceptorAdapter {
         dto.setReqIp(ip);
         dto.setReqUrl(url.toString());
         dto.setReqTime(new Timestamp(new Date().getTime()));
-        if (url.indexOf("/fkSrpsl/") != -1 && ipSafe(ip)) {
+        if (url.indexOf("/thor/") != -1 && ipSafe(ip)) {
             dto.setStatus(0);
             mapper.insert(dto);
             return true;

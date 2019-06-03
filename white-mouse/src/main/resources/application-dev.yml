@@ -4,7 +4,7 @@
 #   username: root
 server:
     servlet:
-        context-path: '/fkSrpsl'
+        context-path: '/thor'
 c3p0:
    maxPoolSize: 20
    minPoolSize: 2
