@@ -161,6 +161,10 @@
     from jvm_oeder
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getMnemonicList" resultType="java.lang.String">
+    select mnemonic from jvm_oeder
+
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="Integer" >
     <!--
       WARNING - @mbggenerated

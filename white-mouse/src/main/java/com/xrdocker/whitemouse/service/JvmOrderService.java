@@ -1,5 +1,6 @@
 package com.xrdocker.whitemouse.service;
 
+import com.xrdocker.whitemouse.controller.support.reqParam.JvmOrderParam;
 import com.xrdocker.whitemouse.persistent.entity.JvmOederWithBLOBs;
 
 import java.util.List;
@@ -13,4 +14,8 @@ import java.util.List;
 public interface JvmOrderService {
 
     List<JvmOederWithBLOBs> getAll();
+
+    JvmOederWithBLOBs searchOrder(JvmOrderParam param);
+
+    List<String> getMnemonicList();
 }

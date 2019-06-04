@@ -15,7 +15,9 @@
  */
 package com.xrdocker.whitemouse.service.impl;
 
+import com.xrdocker.whitemouse.controller.support.reqParam.JvmOrderParam;
 import com.xrdocker.whitemouse.persistent.JvmOederMapper;
+import com.xrdocker.whitemouse.persistent.entity.JvmOederExample;
 import com.xrdocker.whitemouse.persistent.entity.JvmOederWithBLOBs;
 import com.xrdocker.whitemouse.service.JvmOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,5 +42,34 @@ public class JvmOrderServiceImpl implements JvmOrderService {
     public List<JvmOederWithBLOBs> getAll() {
 
         return mapper.selectAll();
+    }
+
+    @Override
+    public JvmOederWithBLOBs searchOrder(JvmOrderParam param) {
+        JvmOederWithBLOBs jvmOederWithBLOBs=null;
+
+        JvmOederExample example=new JvmOederExample();
+        JvmOederExample.Criteria criteria=example.createCriteria();
+
+        if (param.getId() !=null ){
+            criteria.andIdEqualTo(param.getId());
+        }
+        if (param.getMnemonic() !=null ){
+            criteria.andMnemonicEqualTo(param.getMnemonic());
+        }
+        if (param.getOrderCode() !=null){
+            criteria.andOrderCodeEqualTo(param.getOrderCode());
+        }
+
+        List<JvmOederWithBLOBs> orders=mapper.selectByExampleWithBLOBs(example);
+        if (orders!=null && !orders.isEmpty()){
+            jvmOederWithBLOBs=orders.get(0);
+        }
+        return jvmOederWithBLOBs;
+    }
+
+    @Override
+    public List<String> getMnemonicList() {
+        return mapper.getMnemonicList();
     }
 }

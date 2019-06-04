@@ -121,4 +121,6 @@ public interface JvmOederMapper {
     int updateByPrimaryKey(JvmOeder record);
 
     List<JvmOederWithBLOBs> selectAll();
+
+    List<String> getMnemonicList();
 }

@@ -5,12 +5,15 @@
     <title>字节码指令集</title>
     <link rel="stylesheet" th:href="@{/frame/bootstrap/css/bootstrap.min.css}"
           href="../../../../../static/frame/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" th:href="@{/frame/bootstrap/css/bootstrap.min.css}"
+    <link rel="stylesheet" th:href="@{/frame/font-awesome/css/font-awesome.min.css}"
           href="../../../../../static/frame/font-awesome/css/font-awesome.min.css">
 
-    <script th:src="@{/frame/jq/jquery-3.2.1.min.js}" src="../../../../../static/frame/jq/jquery-3.2.1.min.js"></script>
+    <script th:src="@{/frame/jq/jquery-3.2.1.min.js}"
+            src="../../../../../static/frame/jq/jquery-3.2.1.min.js"></script>
     <script th:src="@{/frame/bootstrap/js/bootstrap.min.js}"
             src="../../../../../static/frame/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/common.js}"
+            src="../../../../../static/js/common.js"></script>
     <style>
         /*带搜索图标的搜索框样式*/
         #searchInput {
@@ -50,11 +53,14 @@
 
         #index_panel {
             width: 18%;
-            height: 520px;
+            height: 600px;
             border-right: 3px solid #F00;
             float: left;
         }
-
+        #list{
+            height: 600px;
+            overflow:auto;/*滚条*/
+        }
         #content_panel {
             width: 80%;
             height: 520px;
@@ -65,6 +71,10 @@
     </style>
 
     <script type="text/javascript">
+        $(document).ready(function() {
+            getList();
+        });
+
         $("#search").focus(function () {
             $("#search").addClass("search");
             $("#tubiao").addClass("tubiao");
@@ -74,13 +84,7 @@
             $("#search").removeClass("search");
             $("#tubiao").removeClass("tubiao");
         })
-        function doSearch() {
-            var s=$('#search').val();
-            console.log("====================search: "+s)
-        }
-        function showDetail(id) {
-            active(id);
-        }
+
         function active(id) {
             var list=document.getElementsByClassName('list-group-item');
             for (var i = 0, len = list.length; i < len; i++){
@@ -91,11 +95,63 @@
             }
             $('#'+id).addClass('active');
         }
+
+        /**
+         * 滚动条自动定位
+         * @param id
+         */
+        function autoLocation(id) {
+            var mainContainer=$('#list');
+            var scrollToContainer = mainContainer.find('#'+id);
+            mainContainer.scrollTop(
+              scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
+            );
+        }
+        
+        function getList() {
+            sendGet("/thor/jvm/getMnemonics",function (data) {
+                if (data.rspCode=='00100000') {
+                    var list=data.rspObj;
+                    var length=list.length;
+                    for (var i = 0; i <length ; i++) {
+                        var l=$('<a id="'+list[i]+'" class="list-group-item" onclick="showDetail(this.id)">'+list[i]+'</a>');
+                        $('#list').append(l);
+                    }
+                }
+            });
+        }
+
+        function doSearch() {
+            var s=$('#search').val();
+            showDetail(s);
+            autoLocation(s);
+        }
+
+        function showDetail(id) {
+            active(id);
+            var url="/thor/jvm/getOrderDetails?mnemonic="+id;
+            $('#details').empty();
+            sendGet(url,function (data) {
+                if (data.rspCode=='00100000') {
+                    var obj=data.rspObj;
+
+                    var orderCode=$('<td>'+obj.orderCode+'</td>');
+                    var mnemonic=$('<td>'+obj.mnemonic+'</td>');
+                    var desc=$('<td>'+obj.desc+'</td>');
+                    var tr=$('<tr></tr>');
+                    tr.append(orderCode);
+                    tr.append(mnemonic);
+                    tr.append(desc);
+                    $('#details').append(tr);
+                }
+            });
+
+        }
     </script>
 </head>
 <body>
 <!--<div th:include="/common/hmenu :: hmenu" ></div>-->
-<iframe th:src="@{/common/hmenu.html}" src="../../../../common/hmenu.html" width="100%" ; height="50px" frameborder="0"
+<iframe th:src="@{/common/hmenu}" src="../../../../common/hmenu.html" width="100%" ; height="50px" frameborder="0"
         scrolling="no" name="headFrame"></iframe>
 <div style="width:100%;position:absolute;">
     <div id="index_panel">
@@ -108,12 +164,6 @@
 	       </span>
         </div>
         <div id="list" style="margin-top: 15%">
-            <a id="1" class="list-group-item" onclick="showDetail(this.id)">iconst_0</a>
-            <a id="2" class="list-group-item" onclick="showDetail(this.id)">iconst_1</a>
-            <a id="3" class="list-group-item" onclick="showDetail(this.id)">iconst_2</a>
-            <a id="4" class="list-group-item" onclick="showDetail(this.id)">iconst_3</a>
-            <a id="5" class="list-group-item" onclick="showDetail(this.id)">iconst_4</a>
-            <a id="6" class="list-group-item" onclick="showDetail(this.id)">iconst_5</a>
         </div>
     </div>
     <div id="content_panel">
@@ -128,12 +178,7 @@
                     <th>功能描述</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>0x02</td>
-                    <td>iconst_m1</td>
-                    <td>int型常量值-1进栈</td>
-                </tr>
+                <tbody id="details">
                 </tbody>
             </table>
         </div>
