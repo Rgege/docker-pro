@@ -6,6 +6,9 @@
 #server:
 #    servlet:
 #        context-path: '/fkSrpsl'
+server:
+    servlet:
+        context-path: '/thor'
 c3p0:
    maxPoolSize: 20
    minPoolSize: 2
