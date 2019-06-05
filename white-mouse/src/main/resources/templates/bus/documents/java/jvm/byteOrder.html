@@ -103,8 +103,9 @@
         function autoLocation(id) {
             var mainContainer=$('#list');
             var scrollToContainer = mainContainer.find('#'+id);
+            console.log(scrollToContainer.offset().top +"-"+mainContainer.offset().top+"+"+mainContainer.scrollTop());
             mainContainer.scrollTop(
-              scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
+                scrollToContainer.offset().top - mainContainer.offset().top + mainContainer.scrollTop()
             );
         }
         
@@ -170,7 +171,7 @@
         <div id="outline" style="margin-left: 5%;color: blue;">
             <label style="font-size: large">指令描述:</label>
             <br>
-            <table class="table table-bordered">
+            <table class="table table-bordered" style="table-layout: fixed;">
                 <thead>
                 <tr>
                     <th>指令码</th>
